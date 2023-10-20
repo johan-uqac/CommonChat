@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&display=swap');
+
+:root {
+    --dark-white: antiquewhite;
+    --white: white;
+    --black: black;
+    --accent: #fbc810;
+}
+
+.username {
+    text-transform: uppercase;
+    font-size: 1em;
+    text-align: center;
+    flex: 4;
+    font-weight: 700;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    height: 800px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins";
+    font-weight: 500;
+    border: var(--black) 2px solid;
+}
+
+.messages-container {
+    display: flex;
+    flex: 8;
+    flex-direction: column;
+    overflow: scroll;
+    background-color: var(--white);
+}
+
+.message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--white);
+    font-size: 0.8em;
+}
+
+.message-date {
+    font-weight: 800;
+    margin-right: 0.3em;
+}
+
+.message-username {
+    font-style: italic;
+    margin-right: 0.3em;
+}
+
+.input-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: var(--black) 2px solid;
+    background-color: var(--white);
+}
+
+.message-input {
+    flex: 15;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 0.2em;
+    font-size: 1em;
+    font-family: "Poppins";
+    font-weight: 500;
+    background-color: var(--dark-white);
+}
+
+.send-button {
+    flex: 1;
+    height: "100%";
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 0.2em;
+    font-size: 1em;
+    font-family: "Poppins";
+    font-weight: 500;
+    background-color: var(--accent);
+    color: var(--white);
+}

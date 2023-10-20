@@ -8,9 +8,18 @@
         <meta name="author" content="Johan Chrillesen">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="./css/index.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/requests.js"></script>
+        <script src="js/helperFunctions.js"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
-        <script src="js/index.js"></script>
-        <h1>CommonChat title</h1>
+        <div class="messages-container">
+        </div>
+        <div class="input-container">
+            <span class="username"></span>
+            <input type="text" class="message-input" id="input" placeholder="Entrez votre message...">
+            <button class="send-button" onclick="sendMessage()">Envoyer</button>
+        </div>
     </body>
 </html>
