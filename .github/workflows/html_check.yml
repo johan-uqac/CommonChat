@@ -1,0 +1,58 @@
+name: HTML Check
+
+on:
+  push:
+    branches: [ main ]
+
+
+jobs:
+  check-with-w3c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Wait for github pages deployment
+        run: |
+          echo "Waiting 70s for github pages deployment"
+          sleep 70
+        
+      
+      - name: Call W3C API
+        run: |
+          touch errors.txt
+          line_length=$(echo $(curl -s "https://validator.nu/?doc=https://johan-uqac.github.io/CommonChat&out=gnu") | wc -m | tail -n 1 | tr -d ' ')
+
+          if [ $line_length != 1 ]; then
+              curl -s "https://validator.nu/?doc=https://johan-uqac.github.io/CommonChat&out=gnu" > errors.txt
+              echo "W3C_ERRORS=1" >> $GITHUB_ENV
+          else
+              echo "W3C_ERRORS=0" >> $GITHUB_ENV
+          fi
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: errors
+          path: errors.txt
+        if: env.W3C_ERRORS == '1'
+      
+      - name: Exit if there is an error
+        run: |
+          if [ $W3C_ERRORS -eq 1 ]; then
+            exit 1
+          fi
+  create_zip:
+    needs: check-with-w3c
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create zip
+        run: |
+          zip -r TP2_CHRILLESEN_JOHAN.zip index.html css img js
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: TP2_CHRILLESEN_JOHAN.zip
+          path: TP2_CHRILLESEN_JOHAN.zip

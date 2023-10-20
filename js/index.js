@@ -1,0 +1,1 @@
+console.log("Hey page is loaded!")
