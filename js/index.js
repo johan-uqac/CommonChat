@@ -1,13 +1,13 @@
 let token;
 let username;
 
-async function main() {
+async function init() {
     await login().then(response => response.json()).then(json => {
         token = json.Token
         username = json.Name
     });
 
-    document.querySelector('.username').innerHTML = username
+    document.querySelector('.username').textContent = username
 
     const messages = await getMessages(token).then(response => response.json())
     messages.forEach(message => {
@@ -18,7 +18,7 @@ async function main() {
     console.table(messages)
 }
 
-main()
+init()
 
 let websocket = new WebSocket("ws://" + API_URL + WS_ENDPOINT)
 
