@@ -14,7 +14,7 @@ function addMessageToList(message) {
 }
 
 function scrollToEnd() {
-    const messageDiv = document.getElementsByClassName('messages-container')
+    const messageDiv = document.querySelector('.messages-container')
     messageDiv.scrollTop = messageDiv.scrollHeight
 }
 

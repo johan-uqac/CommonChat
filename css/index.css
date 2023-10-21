@@ -33,7 +33,7 @@ html {
 
 body {
     height: 800px;
-    width: 800px;
+    width: 1200px;
     display: flex;
     flex-direction: column;
     font-family: "Poppins";
@@ -54,17 +54,25 @@ body {
     flex-direction: row;
     align-items: center;
     background-color: var(--white);
-    font-size: 0.8em;
+    font-size: 0.9em;
+    align-items: flex-start;
 }
 
 .message-date {
     font-weight: 800;
     margin-right: 0.3em;
+    justify-self: flex-start;
 }
 
 .message-username {
     font-style: italic;
     margin-right: 0.3em;
+    align-content: flex-start;
+}
+
+.message-content {
+    text-align: left;
+    flex: 1;
 }
 
 .input-container {
